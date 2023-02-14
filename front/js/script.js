@@ -15,7 +15,8 @@ fetch('http://localhost:3000/api/products')
             // loop through the array to build the html to be added to our dom
             // Template Strings (`` backtick strings)
 
-            /* Template literals are enclosed by backtick (`) 
+            /* definition for me: will delete later on;
+            Template literals are enclosed by backtick (`) 
             characters instead of double or single quotes.
 
 Along with having normal strings, 
