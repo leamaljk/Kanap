@@ -6,9 +6,11 @@
     let totalArticles = document.getElementById("totalQuantity");
     let cart_quantity = 0;
     let cart_price = 0;
+    
     //Loop through the producrt array fom local storage
+    //Create and insert the elements on the cart page.
     products.forEach((product) => {
-        fetch(`https://murmuring-basin-08429.herokuapp.com/api/products/${product._id} `)
+        fetch(`http://localhost:3000/api/products/${product._id} `)
             .then(response => {
             response.json().then(p => {
                 let cartItems = "";
@@ -21,7 +23,6 @@
                 <div class="cart__item__content__description">
                   <h2>${p.name}</h2>
                   <p>${product.color} </p>
-                  <p> &euro; (${p.price})* ${product.quantity}</p>
                   <p> &euro;${p.price}</p>
                 </div>
                 <div class="cart__item__content__settings">
