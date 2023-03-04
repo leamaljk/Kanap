@@ -39,47 +39,6 @@ fetch(`http://localhost:3000/api/products/${id} `)
         });
     });
 });
-/*
-        })
-
-      
-    }).then(()=>{
-        addEventListeners();
-    })
-
-function addEventListeners(){
-    const colors = document.getElementById('colors');
-    colors.addEventListener('change', upDateColor)
-
-}
-
-
-function upDateColor(event){
- console.log(event.target.value);
-} 
-
-//add event listener on button Add To Cart
-console.log('helo');
-const btn = document.getElementById('addToCart');
-
-btn.addEventListener('click', function(event){
-    productsInTheCart();
-});
-
-function productsInTheCart () {
-    let productNumbers = localStorage.getItem('productsInTheCart');
-    //converting a string into a number
-    
-    productNumbers = parseInt(productNumbers);
-    
-    if (productNumbers){
-        localStorage.setItem('productsInTheCart', productNumbers +1);
-    } else {
-        localStorage.setItem('productsInTheCart', 1);
-    }
-};
-
-*/
 
 //Milestone #7: Adding products to the cart
 /*
