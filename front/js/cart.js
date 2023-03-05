@@ -68,6 +68,8 @@ is being changed to cart_price (multiplication od price and quantity) */
    // With no duplicates of the same id or color.
 
 
+//#9 milestone
+
 //Now I am able to delete the item on the cart page by clicking on the Delete button
 //therefore deleting in local storage and in total price
 
@@ -111,3 +113,95 @@ const updateCart = (id, color) => {
   // reload the cart and total
   loadCart();
 };
+
+// #10 milestone
+// form data
+// regular expressions for validation
+let emailRegExp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+let charAlphaRegExp = /^[A-Za-z -]{3,32}$/;
+let addressRegExp = /^[A-Za-z0-9 ]{7,32}$/;
+//getting access to form data in the DOM
+let form = document.querySelector('.cart__order__form');
+let firstName = document.getElementById('firstName');
+let lastName = document.getElementById('lastName');
+let address = document.getElementById('address');
+let city = document.getElementById('city');
+let email = document.getElementById('email');
+let validFirstName = false;
+let validLastName = false;
+let validAddress = false;
+let validCity = false;
+let validEmail = false;
+
+firstName.addEventListener('change', checkFirstName)
+lastName.addEventListener('change', checkLastName)
+address.addEventListener('change', checkAddress)
+city.addEventListener('change', checkCity)
+email.addEventListener('change', checkEmail)
+
+//First name:
+function checkFirstName(){
+  if (charAlphaRegExp.test(firstName.value)) {
+    firstNameErrorMsg.innerHTML = null;
+    firstName.style.border = '2px solid green';
+    validFirstName = true;
+    } else if (charAlphaRegExp.test(firstName.value) === false||firstName.value === '') {
+    firstNameErrorMsg.innerHTML = 'Please enter a valid first name';
+    firstName.style.border = '2px solid red';
+    validFirstName = false;
+    }
+};
+
+//Name:
+function checkLastName(){
+  if (charAlphaRegExp.test(lastName.value)) {
+    lastNameErrorMsg.innerHTML = null;
+    lastName.style.border = '2px solid green';
+    validLastName = true;
+    } else if (charAlphaRegExp.test(lastName.value) === false||lastName.value === '') {
+    lastNameErrorMsg.innerHTML = 'Please enter a valid last name';
+    lastName.style.border = '2px solid red';
+    validLastName = false;
+    }
+};
+
+//Address:
+function checkAddress(){
+  if (addressRegExp.test(address.value)) {
+    addressErrorMsg.innerHTML = null;
+    address.style.border = '2px solid green';
+    validAddress = true;
+    } else if (addressRegExp.test(address.value) === false||address.value === '') {
+    addressErrorMsg.innerHTML = 'Please enter a valid address';
+    address.style.border = '2px solid red';
+    validAddress = false;
+    }
+};
+
+//City:
+function checkCity(){
+  if (charAlphaRegExp.test(city.value)) {
+    cityErrorMsg.innerHTML = null;
+    city.style.border = '2px solid green';
+    validCity = true;
+    } else if (charAlphaRegExp.test(city.value) === false||city.value === '') {
+      cityErrorMsg.innerHTML = 'Please enter a valid city';
+      city.style.border = '2px solid red';
+    validCity = false;
+    }
+};
+
+
+//Email:
+function checkEmail(){
+  if (emailRegExp.test(email.value)) {
+    emailErrorMsg.innerHTML = null;
+    email.style.border = '2px solid green';
+    validEmail = true;
+    } else if (emailRegExp.test(email.value) === false||email.value === '') {
+      emailErrorMsg.innerHTML = 'Please enter a valid email';
+      email.style.border = '2px solid red';
+    validEmail = false;
+    }
+};
+
