@@ -6,7 +6,7 @@
     let totalArticles = document.getElementById("totalQuantity");
     let cart_quantity = 0; //is set to 0
     let cart_price = 0;    //is set to 0
-    
+
     //Loop through the product array fom local storage
     products.forEach((product) => {
         fetch(`http://localhost:3000/api/products/${product._id} `)
@@ -43,6 +43,7 @@
                 </div>
               </div>
             </article>`;
+            
                 cart.innerHTML += cartItems;
 /*I am amending the inside of the cart var(id of "cart__items") by ( += ) 
 operator that adds the value of the right operand (let cartItems= "") to a 
@@ -60,10 +61,14 @@ is being changed to cart_quantity; */
 /*let totalPrice = document.getElementById("totalPrice");
 is being changed to cart_price (multiplication od price and quantity) */
             });
+
+            
+            
         });
         //End of foreach Loop
         //Modify the totalQuantity Element 
-    });
+
+    }); 
    // Now we have a cart page which displays all previously-added articles.
    // With no duplicates of the same id or color.
 
@@ -113,6 +118,7 @@ const updateCart = (id, color) => {
   // reload the cart and total
   loadCart();
 };
+
 
 // #10 milestone
 // form data
@@ -204,4 +210,50 @@ function checkEmail(){
     validEmail = false;
     }
 };
+// order button
+let orderButton = document.getElementById('order');
+orderButton.addEventListener('click', orderItem);
 
+// post form and gathering order data
+function orderItem(event){
+  event.preventDefault();
+  // contact object
+  let contact = {
+  firstName: firstName.value,
+  lastName: lastName.value,
+  address: address.value,
+  city: city.value,
+  email: email.value,
+  }
+  // creation of product array, get item IDs
+  const productArray = [];
+  for (let i = 0; i < products.length; i++) {
+  productArray.push(products[i]._id);
+  }
+  // collection of form data object
+  const formData = {
+  contact,
+  productArray,
+  }
+  // header and stringified form object
+  const orderData = {
+  method: 'POST',
+  body: JSON.stringify(formData),
+  headers: {
+  'Content-type': 'application/json',
+  }
+  };
+  // POST request
+  if (validFirstName === true && validLastName === true && validAddress === true && validCity === true && validEmail === true ){
+  fetch('http://localhost:3000/api/products/order', orderData)
+  .then(response => response.json())
+  .then((data) => {
+  let confirmationUrl = './confirmation.html?id=' + data.orderId;
+  localStorage.clear();
+  window.location.href = confirmationUrl;
+  })
+  .catch(error => console.log(error));
+    } else {
+      alert('Please properly fill out the form');
+          }
+  };

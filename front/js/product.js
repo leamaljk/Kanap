@@ -37,6 +37,7 @@ fetch(`http://localhost:3000/api/products/${id} `)
             colorsDropdown.innerHTML += 
             `<option value="${element}"> ${element}</option>`
         });
+        
     });
 });
 
