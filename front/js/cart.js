@@ -216,6 +216,7 @@ orderButton.addEventListener('click', orderItem);
 
 // post form and gathering order data
 function orderItem(event){
+  console.log(products);
   event.preventDefault();
   // contact object
   let contact = {
@@ -225,16 +226,19 @@ function orderItem(event){
   city: city.value,
   email: email.value,
   }
+    // collection of form data object
+    const formData = {
+      contact,
+      products:[],
+      }
+     // console.log(products);
+
   // creation of product array, get item IDs
-  const productArray = [];
   for (let i = 0; i < products.length; i++) {
-  productArray.push(products[i]._id);
+  formData.products.push(products[i]._id);
   }
-  // collection of form data object
-  const formData = {
-  contact,
-  productArray,
-  }
+
+  console.log(formData);
   // header and stringified form object
   const orderData = {
   method: 'POST',
@@ -248,6 +252,7 @@ function orderItem(event){
   fetch('http://localhost:3000/api/products/order', orderData)
   .then(response => response.json())
   .then((data) => {
+    console.log(data);
   let confirmationUrl = './confirmation.html?id=' + data.orderId;
   localStorage.clear();
   window.location.href = confirmationUrl;
