@@ -2,20 +2,23 @@ Lea Maljkovic GITHUB account:
 https://github.com/leamaljk/P5
 
 
-# Kanap #
-
+# Kanap
 This is the front end and back end server for Project 5 of the Web Developer path.
+
+The project mission was to successfully integrate a new website for Kanap, a sofa brand that sells its products exclusively in its store. They want to have an e-commerce platform in addition to their physical store.
+
+We were assigned to use the programming language `JavaScript` to display the api, 
+- develop a functioning cart to add, subtract and maintain values of the sofas, as well as
+- collect user contact information and 
+- utilize Regex to ensure the patterns of the form are being respected
+- generate and return a confirmation number once order was placed
 
 ### Back end Prerequisites ###
 
-You will need to have Node and `npm` installed locally on your machine.
+I installed Node and `npm` locally on my computer.
 
 ### Back end Installation ###
 
-Clone this repo. From the "back" folder of the project, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
-# P5
-Build an e-Commerce website / Kanap
+The backend repo was cloned. From the "back" folder of the project, run `npm install`. I then  
+ran the server with `node server`. 
+
